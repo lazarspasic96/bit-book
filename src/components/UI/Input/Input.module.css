@@ -1,0 +1,16 @@
+
+.Input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+.Invalid {
+    border: 1px solid red;
+    background-color: #FDA49A;
+}
+
+.Error {
+    color: red;
+    margin: 5px 0;
+} 
