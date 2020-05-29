@@ -76,11 +76,33 @@ class SignUp extends React.Component {
             [inputIdentifier]: {
                 ...this.state.auth[inputIdentifier],
                 value: event.target.value,
-                touched: true
+                touched: true,
+                valid: this.chechkValidity(inputIdentifier, event.target.value)
             }
         }
 
         this.setState({auth: updatedAuth})
+    }
+
+    chechkValidity = (inputIdentifier, value) => {
+      
+        let isValid = true
+
+        const emailCheck = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+
+
+        if(inputIdentifier === 'email') {
+            isValid = emailCheck.test(value) && isValid
+        }
+
+        if(inputIdentifier === 'password') {
+            isValid = value.length >= 6 && isValid
+        }
+
+        return isValid
+
+
+
     }
 
 
@@ -104,7 +126,9 @@ class SignUp extends React.Component {
                 elementConfig={formElement.config.elementConfig}
                 touched={formElement.config.touched}
                 value={formElement.config.value}
+                isValid = {!formElement.config.valid}
                 shoudBeValidate={formElement.config.validation}
+                valueType = {formElement.id}
 
             />
 
