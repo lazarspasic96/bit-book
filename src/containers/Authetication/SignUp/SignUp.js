@@ -89,8 +89,13 @@ class SignUp extends React.Component {
         let isValid = true
 
         const emailCheck = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+        if(inputIdentifier === 'firstName') {
+            isValid = value.trim() !== '' && isValid
+        }
 
-
+        if(inputIdentifier === 'lastName') {
+            isValid = value.trim() !== '' && isValid
+        }
         if(inputIdentifier === 'email') {
             isValid = emailCheck.test(value) && isValid
         }

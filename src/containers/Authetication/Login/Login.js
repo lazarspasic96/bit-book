@@ -1,4 +1,8 @@
 import React from 'react'
+import Input from '../../../components/UI/Input/Input';
+import classes from './Login.module.css'
+import loginLogo from '../../../assets/images/loginLogo.jpg'
+import Button from '../../../components/UI/Button/Button'
 
 class Login extends React.Component {
     constructor(props) {
@@ -40,7 +44,42 @@ class Login extends React.Component {
     }
 
     render() {
-        return <p>login</p>
+        const updatedAuth = [];
+    for (let key in this.state.auth) {
+        updatedAuth.push({
+            id: key,
+            config: this.state.auth[key]
+        })
+
+    }
+
+    const form = updatedAuth.map(formElement => {
+        return <Input
+                changed={(event) => this.inputHandler(event, formElement.id)}
+                elementType={formElement.config.elementType}
+                label={formElement.config.label}
+                elementConfig={formElement.config.elementConfig}
+                touched={formElement.config.touched}
+                value={formElement.config.value}
+                isValid = {!formElement.config.valid}
+                shoudBeValidate={formElement.config.validation}
+                valueType = {formElement.id}
+
+            />
+    })
+        return  <div className={classes.Login}>
+
+
+
+        <form>
+            <img src={loginLogo} className={classes.LoginLogo} />
+            <p style={{ textAlign: 'center' }}>Login</p>
+            {form}
+
+            <Button className={classes.LoginBtn}>Login</Button>
+            <p style={{ fontSize: '11px', textAlign: 'center' }}>Dont have and acc</p>
+        </form>
+    </div>
     }
 
 }

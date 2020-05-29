@@ -1,0 +1,29 @@
+.Login {
+    margin: auto;
+    width: 25%;
+  
+}
+
+.LoginLogo {
+    display: block;
+    text-align: center;
+    margin: auto;
+    width: 25%;
+}
+
+
+
+.LoginBtn {
+    margin: 5px 8px;
+    background-color: #039be5;
+    border-radius: 7px;
+    width: 100%;
+    }
+    
+ .LoginBtn:hover {
+    background-color: white;
+    color: #039be5;
+    
+    }
+
+  
