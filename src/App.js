@@ -4,7 +4,7 @@ import './App.css';
 import Layout from './components/Layout/Layout';
 import { Route, Switch } from 'react-router-dom'
 import PublicPosts from './containers/PublicPost/PublicPosts'
-import SignIn from './containers/Authetication/SignIn/SignIn'
+import SignUp from './containers/Authetication/SignUp/SignUp'
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
       <Switch >
         <Route exact path='/posts' component={PublicPosts} />
         <Route exact path='/about' component={PublicPosts} />
-        <Route exact path='/' component={SignIn} />
+        <Route exact path='/' component={SignUp} />
       </Switch>
 
 

@@ -1,11 +1,11 @@
 import React from 'react'
 import Input from '../../../components/UI/Input/Input'
-import classes from './SignIn.module.css';
+import classes from './SignUp.module.css';
 import signInLogo from '../../../assets/images/userLogo.png'
 import Button from '../../../components/UI/Button/Buttons';
 
 
-class SignIn extends React.Component {
+class SignUp extends React.Component {
 
     state = {
         auth: {
@@ -70,6 +70,18 @@ class SignIn extends React.Component {
         },
     }
 
+    inputHandler = (event, inputIdentifier) => {
+        const updatedAuth = {
+            ...this.state.auth,
+            [inputIdentifier]: {
+                ...this.state.auth[inputIdentifier],
+                value: event.target.value,
+                touched: true
+            }
+        }
+
+        this.setState({auth: updatedAuth})
+    }
 
 
 
@@ -86,6 +98,7 @@ class SignIn extends React.Component {
 
         const form = updatedForm.map(formElement => {
             return <Input
+                changed={(event) => this.inputHandler(event, formElement.id)}
                 elementType={formElement.config.elementType}
                 label={formElement.config.label}
                 elementConfig={formElement.config.elementConfig}
@@ -101,21 +114,16 @@ class SignIn extends React.Component {
 
 
 
-
             <form>
-
                 <img src={signInLogo} className={classes.SignInLogo} />
                 <p style={{ textAlign: 'center' }}>Sign Up</p>
-
-
                 {form}
 
-
-                <Button className = {'waves-effect waves-light btn-small'}>Sign in</Button>
+                <Button className={classes.SignInBtn}>Sign in</Button>
+                <p style={{ fontSize: '11px', textAlign: 'center' }}>Alredy have account? Click here to Login</p>
             </form>
-
         </div>
     }
 }
 
-export default SignIn
+export default SignUp

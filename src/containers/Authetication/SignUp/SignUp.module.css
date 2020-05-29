@@ -1,0 +1,29 @@
+.SignIn {
+    margin: auto;
+    width: 25%;
+  
+}
+
+.SignInLogo {
+    display: block;
+    text-align: center;
+    margin: auto;
+    width: 25%;
+}
+
+
+
+.SignInBtn {
+    margin: 5px 8px;
+    background-color: #039be5;
+    border-radius: 7px;
+    width: 100%;
+    }
+    
+ .SignInBtn:hover {
+    background-color: white;
+    color: #039be5;
+    
+    }
+
+  
