@@ -43,6 +43,22 @@ class Login extends React.Component {
 
     }
 
+  
+
+    inputHandler = (event, inputIdentifier) => {
+        const updatedAuth = {
+            ...this.state.auth,
+            [inputIdentifier]: {
+                ...this.state.auth[inputIdentifier],
+                touched: true,
+                value: event.target.value,
+         
+
+            }
+        }
+      this.setState({auth: updatedAuth})
+    }
+
     render() {
         const updatedAuth = [];
     for (let key in this.state.auth) {
