@@ -2,7 +2,7 @@ import React from 'react'
 import Input from '../../../components/UI/Input/Input'
 import classes from './SignUp.module.css';
 import signInLogo from '../../../assets/images/userLogo.png'
-import Button from '../../../components/UI/Button/Buttons';
+import Button from '../../../components/UI/Button/Button';
 
 
 class SignUp extends React.Component {
@@ -149,7 +149,7 @@ class SignUp extends React.Component {
                 {form}
 
                 <Button className={classes.SignInBtn}>Sign in</Button>
-                <p style={{ fontSize: '11px', textAlign: 'center' }}>Alredy have account? Click here to Login</p>
+                <p onClick = {this.props.onSwitch} style={{ fontSize: '11px', textAlign: 'center' }}>Alredy have account? Click here to Login</p>
             </form>
         </div>
     }
