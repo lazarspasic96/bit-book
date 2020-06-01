@@ -26,4 +26,12 @@
     
     }
 
-  
+.Switcher {
+    cursor: pointer;
+    font-size: 11px;
+    text-align: center
+}
+
+.Switcher:hover {
+    color:  #039be5;
+}

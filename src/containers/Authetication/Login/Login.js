@@ -93,7 +93,7 @@ class Login extends React.Component {
             {form}
 
             <Button className={classes.LoginBtn}>Login</Button>
-            <p onClick = {this.props.onSwitch} style={{ fontSize: '11px', textAlign: 'center' }}>Dont have and acc</p>
+            <p className = {classes.Switcher}onClick = {this.props.onSwitch}>Don't have an account? Click here to Sign Up!</p>
         </form>
     </div>
     }

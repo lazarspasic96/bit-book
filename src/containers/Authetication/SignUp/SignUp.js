@@ -149,7 +149,7 @@ class SignUp extends React.Component {
                 {form}
 
                 <Button className={classes.SignInBtn}>Sign in</Button>
-                <p onClick = {this.props.onSwitch} style={{ fontSize: '11px', textAlign: 'center' }}>Alredy have account? Click here to Login</p>
+                <p className = {classes.Switcher} onClick = {this.props.onSwitch}>Alredy have an account? Click here to Login!</p>
             </form>
         </div>
     }
