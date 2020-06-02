@@ -3,6 +3,7 @@ import Input from '../../../components/UI/Input/Input';
 import classes from './Login.module.css'
 import loginLogo from '../../../assets/images/loginLogo.jpg'
 import Button from '../../../components/UI/Button/Button'
+import http from '../../../services/axios'
 
 class Login extends React.Component {
     constructor(props) {
@@ -22,7 +23,7 @@ class Login extends React.Component {
                     },
                     valid: false,
                     touched: false,
-    
+
                 },
                 password: {
                     elementType: 'input',
@@ -36,14 +37,14 @@ class Login extends React.Component {
                     },
                     valid: false,
                     touched: false
-    
+
                 }
             },
         }
 
     }
 
-  
+
 
     inputHandler = (event, inputIdentifier) => {
         const updatedAuth = {
@@ -52,50 +53,61 @@ class Login extends React.Component {
                 ...this.state.auth[inputIdentifier],
                 touched: true,
                 value: event.target.value,
-         
+
 
             }
         }
-      this.setState({auth: updatedAuth})
+        this.setState({ auth: updatedAuth })
+    }
+
+    send = (event) => {
+        event.preventDefault()
+        let data = {
+            email: this.state.auth.email.value,
+            password: this.state.auth.password.value
+        }
+        http.post('auth/login', data)
+            .then(res => {
+                console.log(res.data)
+            })
+
     }
 
     render() {
         const updatedAuth = [];
-    for (let key in this.state.auth) {
-        updatedAuth.push({
-            id: key,
-            config: this.state.auth[key]
-        })
+        for (let key in this.state.auth) {
+            updatedAuth.push({
+                id: key,
+                config: this.state.auth[key]
+            })
 
-    }
+        }
 
-    const form = updatedAuth.map(formElement => {
-        return <Input
+        const form = updatedAuth.map(formElement => {
+            return <Input
                 changed={(event) => this.inputHandler(event, formElement.id)}
                 elementType={formElement.config.elementType}
                 label={formElement.config.label}
                 elementConfig={formElement.config.elementConfig}
                 touched={formElement.config.touched}
                 value={formElement.config.value}
-                isValid = {!formElement.config.valid}
-                shoudBeValidate={formElement.config.validation}
-                valueType = {formElement.id}
+                valueType={formElement.id}
 
             />
-    })
-        return  <div className={classes.Login}>
+        })
+        return <div className={classes.Login}>
 
 
 
-        <form>
-            <img src={loginLogo} className={classes.LoginLogo} />
-            <p style={{ textAlign: 'center' }}>Login</p>
-            {form}
+            <form>
+                <img src={loginLogo} className={classes.LoginLogo} />
+                <p style={{ textAlign: 'center' }}>Login</p>
+                {form}
 
-            <Button className={classes.LoginBtn}>Login</Button>
-            <p className = {classes.Switcher}onClick = {this.props.onSwitch}>Don't have an account? Click here to Sign Up!</p>
-        </form>
-    </div>
+                <Button clicked = {(event) => this.send(event)}className={classes.LoginBtn}>Login</Button>
+                <p className={classes.Switcher} onClick={this.props.onSwitch}>Don't have an account? Click here to Sign Up!</p>
+            </form>
+        </div>
     }
 
 }
