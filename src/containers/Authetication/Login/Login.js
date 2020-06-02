@@ -80,6 +80,7 @@ class Login extends React.Component {
 
         const form = updatedAuth.map(formElement => {
             return <Input
+                key = {formElement.id}
                 changed={(event) => this.inputHandler(event, formElement.id)}
                 elementType={formElement.config.elementType}
                 label={formElement.config.label}

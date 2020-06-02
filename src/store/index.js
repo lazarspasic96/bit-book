@@ -1,3 +1,4 @@
 export {
-    login
+    login,
+    signUp
 } from './actions/actionCreators/authentication'

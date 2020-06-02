@@ -3,6 +3,8 @@ import Input from '../../../components/UI/Input/Input'
 import classes from './SignUp.module.css';
 import signInLogo from '../../../assets/images/userLogo.png'
 import Button from '../../../components/UI/Button/Button';
+import {connect} from 'react-redux'
+import * as action from '../../../store/index'
 
 
 class SignUp extends React.Component {
@@ -110,6 +112,17 @@ class SignUp extends React.Component {
 
     }
 
+    onSignUpHandler = (event) => {
+        event.preventDefault()
+        const signUpData = {
+            name: this.state.auth.firstName.value,
+            email: this.state.auth.email.value,
+            password: this.state.auth.password.value
+        }
+        this.props.onSignUp(signUpData)
+
+    }
+
 
 
     render() {
@@ -125,6 +138,7 @@ class SignUp extends React.Component {
 
         const form = updatedForm.map(formElement => {
             return <Input
+                key = {formElement.id}
                 changed={(event) => this.inputHandler(event, formElement.id)}
                 elementType={formElement.config.elementType}
                 label={formElement.config.label}
@@ -143,7 +157,7 @@ class SignUp extends React.Component {
 
 
 
-            <form>
+            <form onSubmit = {this.onSignUpHandler}>
                 <img src={signInLogo} className={classes.SignInLogo} />
                 <p style={{ textAlign: 'center' }}>Sign Up</p>
                 {form}
@@ -155,4 +169,10 @@ class SignUp extends React.Component {
     }
 }
 
-export default SignUp
+const mapDispatchToProps = dispatch => {
+    return {
+        onSignUp: (signUpData) => dispatch(action.signUp(signUpData))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(SignUp)

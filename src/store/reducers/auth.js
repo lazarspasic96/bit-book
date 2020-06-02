@@ -27,6 +27,24 @@ const reducer = (state = initialState, action) => {
                 error: action.error,
                 loading: false
             }
+        case actionTypes.SIGNUP_START:
+            return {
+                ...state,
+                loading: true,
+            }
+        case actionTypes.SIGNUP_FAIL:
+            return {
+                ...state,
+                error: action.error,
+                loading: false
+            }
+        case actionTypes.SIGNUP_SUCCESS: {
+            return {
+                ...state,
+                loading: false,
+                token: action.token
+            }
+        }
         default:
             return state;
 

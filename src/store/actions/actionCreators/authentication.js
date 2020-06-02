@@ -40,3 +40,41 @@ export const login = (email, password) => {
             })
     }
 }
+
+export const signUpStart = () => {
+    return {
+        type: actionTypes.SIGNUP_START
+    }
+}
+
+export const signUpFail = (error) => {
+    return {
+        type: actionTypes.SIGNUP_FAIL,
+        error: error
+
+    }
+}
+
+export const signUpSuccess = (token) => {
+    return {
+        type: actionTypes.SIGNUP_SUCCESS,
+        token: token
+
+    }
+}
+
+export const signUp = (signUpData) => {
+    return dispatch => { 
+              console.log(signUpData)
+        dispatch(signUpStart())
+        http.post('auth/register', signUpData)
+ 
+        .then(res => {
+            console.log()
+            dispatch(signUpSuccess(res.data.accessToken))
+        })
+        .catch(error => {
+            dispatch(signUpFail(error.response.data.message))
+        })
+    }
+}
