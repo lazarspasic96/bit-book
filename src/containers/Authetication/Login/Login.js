@@ -4,6 +4,8 @@ import classes from './Login.module.css'
 import loginLogo from '../../../assets/images/loginLogo.jpg'
 import Button from '../../../components/UI/Button/Button'
 import http from '../../../services/axios'
+import {connect} from 'react-redux'
+import * as action from '../../../store/index'
 
 class Login extends React.Component {
     constructor(props) {
@@ -60,17 +62,10 @@ class Login extends React.Component {
         this.setState({ auth: updatedAuth })
     }
 
-    send = (event) => {
+    loginHandler = (event) => {
         event.preventDefault()
-        let data = {
-            email: this.state.auth.email.value,
-            password: this.state.auth.password.value
-        }
-        http.post('auth/login', data)
-            .then(res => {
-                console.log(res.data)
-            })
-
+        this.props.onLogin(this.state.auth.email.value, this.state.auth.password.value)
+ 
     }
 
     render() {
@@ -99,12 +94,12 @@ class Login extends React.Component {
 
 
 
-            <form>
+            <form onSubmit = {this.loginHandler}>
                 <img src={loginLogo} className={classes.LoginLogo} />
                 <p style={{ textAlign: 'center' }}>Login</p>
                 {form}
 
-                <Button clicked = {(event) => this.send(event)}className={classes.LoginBtn}>Login</Button>
+                <Button className={classes.LoginBtn}>Login</Button>
                 <p className={classes.Switcher} onClick={this.props.onSwitch}>Don't have an account? Click here to Sign Up!</p>
             </form>
         </div>
@@ -112,4 +107,10 @@ class Login extends React.Component {
 
 }
 
-export default Login
+const mapDispatchToProps = dispatch => {
+    return {
+        onLogin: (email, password) => dispatch(action.login(email, password))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(Login)
