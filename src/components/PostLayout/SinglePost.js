@@ -3,21 +3,20 @@ import classes from './SinglePost.module.css'
 
 
 const SinglePost = (props) => {
-    return <div className = {classes.Card}>
+    return <div className={classes.Card}>
 
 
         <div className='col s12 m4 l4'>
             <div className="card">
                 <div className="card-image">
-                    <img src='' />
-              
+                    <img className = {classes.CardImg} src={props.postData.photo} />
+
                 </div>
                 <div className="card-content">
-                    <p>I am a very simple card. I am good at containing small bits of information.
-          I am convenient because I require little markup to use effectively.</p>
+                    <h5>{props.postData.title}</h5>
                 </div>
                 <div className="card-action">
-                    <a href="#">This is a link</a>
+                    <span>Author Name: | </span> <span>Comments: </span>
                 </div>
             </div>
 

@@ -1,3 +1,5 @@
-.Card {
-    margin: 30px;
+.CardImg {
+    width: 100% !important;
+    height: 220px !important;
 }
+

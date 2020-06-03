@@ -1,28 +1,33 @@
-import React from 'react' 
+import React from 'react'
 import SinglePost from '../../components/PostLayout/SinglePost'
+import http from '../../services/axios'
+import Post from '../../entities/Post'
 
 
 class PublicPosts extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props)
         this.state = {
-
+            posts: []
         }
+    }
+    componentDidMount() {
+        http.get('posts')
+            .then(res => {
+                console.log(res.data)
+                this.setState({
+                    posts: res.data.map(post => new Post(post))
+                })
+            })
     }
 
     render() {
+
+        const posts = this.state.posts.map(post => <SinglePost postData = {post} />)
         return <>
-    <div className='row'>
-        <SinglePost />
-        <SinglePost />
-        <SinglePost />
-        <SinglePost />
-        <SinglePost />
-        <SinglePost />
-        <SinglePost />
-        <SinglePost />
-        <SinglePost />
-    </div>
+            <div className='row'>
+                {posts}
+            </div>
         </>
     }
 }
