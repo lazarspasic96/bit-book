@@ -1,5 +1,8 @@
-.CardImg {
-    width: 100% !important;
-    height: 220px !important;
+.flex-container {
+    display: flex;
+    flex-direction: row;
 }
 
+.Dashboard {
+    color: red;
+}

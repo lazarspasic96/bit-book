@@ -7,23 +7,25 @@ import PublicPosts from './containers/PublicPost/PublicPosts'
 import AuthPage from './containers/Authetication/AuthPage';
 import Dashboard from './containers/Dashboard/Dashboard';
 import Header from './components/Layout/Header/Header';
+import SinglePost from './components/PostLayout/SinglePost';
 
 
 
 function App() {
   return (
-/*     <Layout>
-      <Switch >
-        <Route exact path='/posts' component={PublicPosts} />
-        <Route exact path='/about' component={PublicPosts} />
-        <Route exact path='/' component={AuthPage} />
-
-      </Switch>
-    </Layout> */
+    /*     <Layout>
+          <Switch >
+            <Route exact path='/posts' component={PublicPosts} />
+            <Route exact path='/about' component={PublicPosts} />
+            <Route exact path='/' component={AuthPage} />
+    
+          </Switch>
+        </Layout> */
     <>
-    <Header />
-        <Route exact path = '/dashboard' component = {Dashboard} />
-        </>
+      <Dashboard>
+        <SinglePost />
+      </Dashboard>
+    </>
   );
 }
 

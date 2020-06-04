@@ -1,6 +1,7 @@
 import React from 'react'
 import Sidebar from './Sidebar/Sidebar'
-import classes from './Dashboard.module.css'
+import SinglePost from '../../components/PostLayout/SinglePost'
+import classes from './DashBoard.module.css'
 
 class Dashboard extends React.Component {
     constructor(props) {
@@ -11,10 +12,16 @@ class Dashboard extends React.Component {
     }
 
     render() {
-        return <main className = {classes.DashBoard}>
-            <Sidebar />
+        return <main className = {[classes.DashBoard, 'flex-container'].join(' ')}>
+            <div>
+                <Sidebar />
+            </div>
 
-            {this.props.children}
+
+           
+                <div className = {classes.ContentWrapper}>
+                           {this.props.children}
+                </div>
         </main>
     }
 }
