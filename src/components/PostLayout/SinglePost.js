@@ -1,27 +1,37 @@
 import React from 'react'
 import classes from './SinglePost.module.css'
+import {NavLink} from 'react-router-dom'
 
 
 const SinglePost = (props) => {
-    return <div className={classes.Card}>
-
-
+    return (
         <div className='col s12 m4 l4'>
-            <div className="card">
-                <div className="card-image">
-                    <img className = {classes.CardImg} src={props.postData.photo} />
+            <div className={classes.PostCard}>
+                <div className={classes.PostCardNavigation}>
+                    <ul>
+                        <li>
+                            
+                            <a href="#" class="active"><i class="ion ion-ios-eye"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="ion ion-ios-location"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="ion ion-android-star"></i></a>
+                        </li>
+                    </ul>
 
                 </div>
-                <div className="card-content">
-                    <h5>{props.postData.title}</h5>
-                </div>
-                <div className="card-action">
-                    <span>Author Name: | </span> <span>Comments: </span>
-                </div>
+
+
+
+
             </div>
-
         </div>
-    </div>
+    )
+
+
+
 
 }
 
