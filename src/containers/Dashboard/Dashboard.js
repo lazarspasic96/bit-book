@@ -13,7 +13,7 @@ class Dashboard extends React.Component {
     render() {
         return <main className = {[classes.DashBoard, 'flex-container'].join(' ')}>
             <div>
-                <Sidebar />
+               
             </div>
 
 

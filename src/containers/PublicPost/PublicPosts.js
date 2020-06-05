@@ -1,7 +1,7 @@
 import React from 'react'
-import SinglePost from '../../components/PostLayout/SinglePost'
 import http from '../../services/axios'
 import Post from '../../entities/Post'
+import Postcard from '../../components/PostLayout/PostCard/PostCard'
 
 
 class PublicPosts extends React.Component {
@@ -23,7 +23,7 @@ class PublicPosts extends React.Component {
 
     render() {
 
-        const posts = this.state.posts.map(post => <SinglePost postData = {post} />)
+        const posts = this.state.posts.map(post => <Postcard postData = {post} />)
         return <>
             <div className='row'>
                 {posts}

@@ -10,12 +10,12 @@
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
   display: flex;
   border-radius: 0.3rem;
-  margin:  auto
+  margin: auto;
 }
 
 .PostCardNavigation {
   display: flex;
-  /*     border-radius: 0.3rem; */
+  border-radius: 0.3rem;
 }
 .PostCardNavigation > ul {
   list-style-type: none;
@@ -49,7 +49,6 @@
 
 .PostCardNavigation > ul > li:hover:not(.Active) {
   background-color: #2d3f53;
-
 }
 
 .Icon {
@@ -77,7 +76,6 @@
   margin-top: 0.7rem;
   font-weight: 100;
   font-size: 13px;
-  
 }
 
 .PostCardInfo > .NavLink:hover {
@@ -155,3 +153,69 @@
   transform: rotate(-15deg) scale(1.5);
 }
 
+@media (max-width: 766px) {
+  .PostCard {
+    width: 100%;
+    max-width: 304px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .PostCardContent {
+    display: flex;
+    height: auto;
+    width: 100%;
+    padding: 0;
+    padding-bottom: 0px;
+  }
+  .PostCardNavigation {
+    width: 100%;
+  }
+  .PostCardNavigation > ul {
+    display: flex;
+    flex-direction: row;
+    height: 55px;
+    width: 100%;
+    border-top-right-radius: 0.3rem;
+    border-top-left-radius: 0.3rem;
+  }
+  .PostCardNavigation > ul > li {
+    display: inline-block;
+    border-bottom: none;
+    border-right: 1px solid rgb(27, 38, 50);
+    width: 33%;
+    height: 55px;
+    line-height: 55px;
+    text-decoration: none;
+  }
+  .PostCardNavigation > ul li:first-child {
+      border-bottom-left-radius: 0;
+  }
+
+  .PostCardImage {
+    border-bottom-left-radius: 0.3rem;
+    border-top-right-radius: 0;
+    height: 100%
+  }
+
+  .PostCardImage > img {
+      display: block;
+      border-bottom-left-radius: 0.3rem;
+      border-top-right-radius: 0
+
+  }
+
+  .PostCardInfo {
+    height: auto;
+    width: 100%;
+    padding: 0.5rem;
+
+  }
+  .PostCardInfo > h1 {
+    font-size: 0.9rem;
+    font-weight: 300;
+    height: auto;
+    margin-top: 10px;
+  }
+}
