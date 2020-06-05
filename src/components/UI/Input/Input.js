@@ -10,7 +10,7 @@ const Input = (props) => {
     const inputClasses = [classes.Input];
 
 
-    if (props.isValid && props.shoudBeValidate && props.touched) {
+    if (props.isValid && props.touched) {
         inputClasses.push(classes.Invalid)
 
 
@@ -33,7 +33,8 @@ const Input = (props) => {
                 className={inputClasses.join(' ')}
                 {...props.elementConfig}
                 value={props.value}
-                onChange={props.changed} />;
+                onChange={props.changed}>
+                </textarea>
             break;
         case ('select'):
             inputElement = (
@@ -49,15 +50,6 @@ const Input = (props) => {
                 </select>
             );
             break;
-        case ('password'):
-            inputElement = (
-                inputElement = <input
-                    className={inputClasses.join(' ')}
-                    {...props.elementConfig}
-                    value={props.value}
-                    onChange={props.changed} />
-            );
-            break;
         default:
             inputElement = <input
                 className={inputClasses.join(' ')}
@@ -66,7 +58,7 @@ const Input = (props) => {
                 onChange={props.changed} />;
     }
     let vadlidationError = null;
-    if (props.isValid && props.shoudBeValidate && props.touched) {
+    if (props.isValid && props.touched) {
         vadlidationError = `Please input a valid ${props.valueType}`;
 
     }
