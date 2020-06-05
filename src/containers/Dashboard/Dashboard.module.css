@@ -5,8 +5,9 @@
  
 }
 
-.ContentWrapper > div {
-    margin: auto;
+.ContentWrapper {
+   width: 70%;
+   margin: 30px auto
 }
 
 

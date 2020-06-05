@@ -1,6 +1,5 @@
 import React from 'react'
 import Sidebar from './Sidebar/Sidebar'
-import SinglePost from '../../components/PostLayout/SinglePost'
 import classes from './DashBoard.module.css'
 
 class Dashboard extends React.Component {

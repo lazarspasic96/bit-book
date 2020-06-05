@@ -34,11 +34,13 @@ class Sidebar extends React.Component {
                         </NavLink>
 
                     </li>
-                    <li> <NavLink className = {classes.NavLink} to='e'>
+
+                    <li> 
+                        <NavLink className = {classes.NavLink} to='e'>
                         <span className={classes.Icon}> <i class="fas fa-heart"></i></span>
-                        <span className={classes.Title}>Favourite Posts</span>
-                        
+                        <span className={classes.Title}>Favourite</span> 
                     </NavLink>
+
                     </li>
 
                     <li>

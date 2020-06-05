@@ -1,0 +1,157 @@
+@import "https://fonts.googleapis.com/css?family=Montserrat:100,300,400,700";
+@import "https://fonts.googleapis.com/css?family=Roboto:100,300,400,700";
+
+.PostCard {
+  font-family: "Montserrat", "Roboto", sans-serif;
+  background-color: white;
+  max-width: 700px;
+  width: 100%;
+  height: auto;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+  display: flex;
+  border-radius: 0.3rem;
+  margin:  auto
+}
+
+.PostCardNavigation {
+  display: flex;
+  /*     border-radius: 0.3rem; */
+}
+.PostCardNavigation > ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 60px;
+  background-color: #22313f;
+  border-bottom-left-radius: 0.3rem;
+  border-top-left-radius: 0.3rem;
+}
+
+.PostCardNavigation > ul > li {
+  display: block;
+  color: white;
+  height: 70px;
+  line-height: 70px;
+  text-align: center;
+  border-bottom: 2px solid rgb(27, 38, 50);
+  border-bottom-left-radius: 0.3rem;
+  border-top-left-radius: 0.3rem;
+}
+
+.PostCardNavigation ul > li:last-child {
+  border: none;
+}
+
+.Active {
+  background-color: #1790d4;
+  color: white;
+}
+
+.PostCardNavigation > ul > li:hover:not(.Active) {
+  background-color: #2d3f53;
+
+}
+
+.Icon {
+  font-size: 20px;
+  color: white;
+}
+
+.PostCardContent {
+  display: flex;
+  height: auto;
+  width: 100% - 70px;
+  padding: 18px;
+}
+
+.PostCardInfo > h1 {
+  font-size: 1.1em;
+  font-weight: 300;
+  height: auto;
+  margin-top: 20px;
+}
+
+.PostCardInfo > .NavLink {
+  display: block;
+  color: rgb(46, 46, 46);
+  margin-top: 0.7rem;
+  font-weight: 100;
+  font-size: 13px;
+  
+}
+
+.PostCardInfo > .NavLink:hover {
+  color: #1790d4;
+  font-weight: 300;
+  text-decoration: underline;
+}
+
+.PostCardInfo > p {
+  margin-top: 1rem;
+  color: #333;
+  font-size: 0.7em;
+  font-weight: 300;
+  line-height: 1.3rem;
+  text-align: left;
+}
+
+.PostImg {
+  height: 100%;
+  width: 100%;
+  border-top-right-radius: 0.3rem;
+  border-bottom-right-radius: 0.3rem;
+}
+
+.PostCardImage {
+  display: flex;
+  height: auto;
+  width: 100%;
+  padding: 0;
+  position: relative;
+}
+
+.PostCardSocial {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+}
+
+.PostCardSocial > ul > li {
+  display: inline-block;
+  margin-right: 19px;
+  color: white;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.5);
+  transition: 0.2s all;
+  cursor: pointer;
+}
+
+.PostCardSocial {
+  right: 2px;
+  bottom: 8px;
+}
+
+.PostCardSocial > ul > li > span {
+  vertical-align: 3px;
+  color: white;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.5);
+  font-family: "Roboto", "Montserrat", sans-serif;
+  font-weight: 400;
+}
+
+.PostCardSocial > ul > li > .Icon {
+  margin-right: 8px;
+  transition: 0.2s all;
+}
+
+.PostCardSocial > ul > li:first-child:hover > i {
+  display: inline-block;
+  color: #2d3f53;
+  transform: rotate(-15deg) scale(1.5);
+}
+
+.PostCardSocial > ul > li:nth-child(2):hover > i {
+  display: inline-block;
+  color: #f44242;
+  transform: rotate(-15deg) scale(1.5);
+}
+
