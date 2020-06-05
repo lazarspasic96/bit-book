@@ -8,6 +8,7 @@ import AuthPage from './containers/Authetication/AuthPage';
 import Dashboard from './containers/Dashboard/Dashboard';
 import Header from './components/Layout/Header/Header';
 import PostCard from './components/PostLayout/PostCard/PostCard';
+import NewPost from './containers/Dashboard/MyPosts/NewPost/NewPost';
 
 
 
@@ -24,8 +25,7 @@ function App() {
         </Layout> */
     <>
       <Dashboard>
-
-        <PostCard />
+    <NewPost />
       </Dashboard>
     </>
   );

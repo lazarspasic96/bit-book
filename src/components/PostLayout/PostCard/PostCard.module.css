@@ -217,5 +217,9 @@
     font-weight: 300;
     height: auto;
     margin-top: 10px;
+    text-align: center;
+  }
+  .PostCardInfo > .NavLink {
+      text-align: center;
   }
 }
