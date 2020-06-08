@@ -4,8 +4,9 @@ import classes from './Login.module.css'
 import loginLogo from '../../../assets/images/loginLogo.jpg'
 import Button from '../../../components/UI/Button/Button'
 import http from '../../../services/axios'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import * as action from '../../../store/index'
+import { Redirect } from 'react-router-dom';
 
 class Login extends React.Component {
     constructor(props) {
@@ -45,9 +46,6 @@ class Login extends React.Component {
         }
 
     }
-
-
-
     inputHandler = (event, inputIdentifier) => {
         const updatedAuth = {
             ...this.state.auth,
@@ -65,8 +63,18 @@ class Login extends React.Component {
     loginHandler = (event) => {
         event.preventDefault()
         this.props.onLogin(this.state.auth.email.value, this.state.auth.password.value)
- 
+
     }
+
+    componentDidMount () {
+        if (this.state.isAuth) {
+          this.history.push('/eee')
+        }
+
+    }
+
+
+
 
     render() {
         const updatedAuth = [];
@@ -80,7 +88,7 @@ class Login extends React.Component {
 
         const form = updatedAuth.map(formElement => {
             return <Input
-                key = {formElement.id}
+                key={formElement.id}
                 changed={(event) => this.inputHandler(event, formElement.id)}
                 elementType={formElement.config.elementType}
                 label={formElement.config.label}
@@ -91,11 +99,16 @@ class Login extends React.Component {
 
             />
         })
+
+        let redirect = null
+  
+
+
+
         return <div className={classes.Login}>
 
-
-
-            <form onSubmit = {this.loginHandler}>
+            {redirect}
+            <form onSubmit={this.loginHandler}>
                 <img src={loginLogo} className={classes.LoginLogo} />
                 <p style={{ textAlign: 'center' }}>Login</p>
                 {form}
@@ -108,10 +121,16 @@ class Login extends React.Component {
 
 }
 
+const mapStateToProps = state => {
+    return {
+        isAuth: state.auth.token !== null
+    }
+}
+
 const mapDispatchToProps = dispatch => {
     return {
         onLogin: (email, password) => dispatch(action.login(email, password))
     }
 }
 
-export default connect(null, mapDispatchToProps)(Login)
+export default connect(mapStateToProps, mapDispatchToProps)(Login)

@@ -2,33 +2,51 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Layout from './components/Layout/Layout';
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, Redirect } from 'react-router-dom'
 import PublicPosts from './containers/PublicPost/PublicPosts'
 import AuthPage from './containers/Authetication/AuthPage';
 import Dashboard from './containers/Dashboard/Dashboard';
-import Header from './components/Layout/Header/Header';
-import PostCard from './components/PostLayout/PostCard/PostCard';
 import NewPost from './containers/Dashboard/MyPosts/NewPost/NewPost';
+import { connect } from 'react-redux'
 
 
 
 
-function App() {
+function App(props) {
+  let routes =
+    <Switch >
+      <Route exact path='/' component={AuthPage} />
+      <Route path='/posts' component={PublicPosts} />
+
+
+    </Switch>
+
+  if (props.isAuth) {
+    routes = (
+
+     <Dashboard>
+       <Route exact path ='/new-post' component = {NewPost} />
+       <Route path='/posts' component={PublicPosts} />
+     </Dashboard>
+
+    )
+
+  }
   return (
-    /*     <Layout>
-          <Switch >
-            <Route exact path='/posts' component={PublicPosts} />
-            <Route exact path='/about' component={PublicPosts} />
-            <Route exact path='/' component={AuthPage} />
-    
-          </Switch>
-        </Layout> */
+
     <>
-      <Dashboard>
-    <NewPost />
-      </Dashboard>
+      <Layout>
+        {routes}
+      </Layout>
+
     </>
   );
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    isAuth: state.auth.token
+  }
+}
+
+export default connect(mapStateToProps)(App);

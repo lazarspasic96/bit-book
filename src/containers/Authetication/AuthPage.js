@@ -1,6 +1,8 @@
 import React from 'react'
 import Login from './Login/Login'
 import SignUp from './SignUp/SignUp'
+import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 
 
 class AuthPage extends React.Component {
@@ -11,15 +13,18 @@ class AuthPage extends React.Component {
         }
     }
 
-        switchLogger = () => {
-          this.setState(prevState => {
+    switchLogger = () => {
+        this.setState(prevState => {
             return {
                 switchLog: !prevState.switchLog
             }
-          })
-        }
-    
+        })
+    }
 
+    componentDidMount() {
+        if(this.props.isAuth)
+            this.props.history.push('dashboard')
+    }
 
     render() {
         let auth = null
@@ -32,8 +37,19 @@ class AuthPage extends React.Component {
         }
 
 
+
+
+
+
         return <div>{auth}</div>
     }
 }
 
-export default AuthPage;
+const mapStateToProps = state => {
+    return {
+        isAuth: state.auth.token
+    }
+}
+
+
+export default connect(mapStateToProps)(AuthPage);
