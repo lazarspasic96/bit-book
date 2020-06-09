@@ -25,7 +25,9 @@ class PostCard extends React.Component {
                         <li>
                             <NavLink to='/'>   <i className={["ion-person", classes.Icon].join(' ')}></i></NavLink>
                         </li>
-                        <li      onClick={() => this.props.favouriteHandler(this.props.postData)}>
+                        <li      onClick={() => this.props.favouriteHandler(
+                            this.props.postData.id, this.state.favourite
+                        )}>
                        
                                  <i className={["ion-heart", classes.Icon].join(' ')}></i>
                         </li>

@@ -7,7 +7,9 @@ class Post {
         this.subTitle = postData.subtitle
         this.text = postData.text
         this.userId = postData.userId
+        this.fav = false
     }
+  
 }
 
 export default Post

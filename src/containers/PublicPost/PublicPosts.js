@@ -9,27 +9,39 @@ class PublicPosts extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            posts: [],
-            favourite: []
+            posts: []
         }
 
     }
-  
+
+    postHandler = (id, favourite) => {
+        console.log(id, favourite)
+     this.state.posts.forEach(post => {
+            if(post.id === id) {
+                post.fav = favourite
+            }
+        } )
+    }
+
     componentDidMount() {
         http.get('posts')
             .then(res => {
-                console.log(res.data)
+         
+            
+
                 this.setState({
-                    posts: res.data.map(post => new Post(post))
+                    posts: res.data.map(post => new Post(post)),
                 })
             })
     }
 
-    render() {
 
-        const posts = this.state.posts.map(post => <Postcard  favouriteHandler = {(postData) => this.postHandler(postData)} postData = {post} />)
+
+    render() {
+    console.log(this.state.posts)
+        const posts = this.state.posts.map(post => <Postcard favouriteHandler={(id, favourite) => this.postHandler(id, favourite)} postData={post} />)
         return <>
-            <div className = {classes.PostWrapper}>
+            <div className={classes.PostWrapper}>
                 <h3>Public Posts</h3>
                 {posts}
             </div>

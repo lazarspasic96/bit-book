@@ -8,40 +8,43 @@ import AuthPage from './containers/Authetication/AuthPage';
 import Dashboard from './containers/Dashboard/Dashboard';
 import NewPost from './containers/Dashboard/MyPosts/NewPost/NewPost';
 import { connect } from 'react-redux'
+import { render } from '@testing-library/react';
 
 
 
 
-function App(props) {
-  let routes =
-    <Switch >
+class App extends React.Component {
+
+
+
+
+  render() {
+    let routes = <Switch >
       <Route exact path='/' component={AuthPage} />
       <Route path='/posts' component={PublicPosts} />
-
-
     </Switch>
 
-  if (props.isAuth) {
-    routes = (
+    if (this.props.isAuth) {
+      routes = (
 
-     <Dashboard>
-       <Route exact path ='/new-post' component = {NewPost} />
-       <Route path='/posts' component={PublicPosts} />
-     </Dashboard>
+        <Dashboard>
+          <Route path='/new-post' component={NewPost} />
+          <Route path='/posts' component={PublicPosts} />
+        </Dashboard>)
+    }
 
-    )
-
-  }
-  return (
-
-    <>
+    return <>
       <Layout>
         {routes}
       </Layout>
-
     </>
-  );
+
+  }
+
 }
+
+
+
 
 const mapStateToProps = state => {
   return {
