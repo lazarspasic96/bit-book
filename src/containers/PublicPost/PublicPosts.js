@@ -3,6 +3,8 @@ import http from '../../services/axios'
 import Post from '../../entities/Post'
 import Postcard from '../../components/PostLayout/PostCard/PostCard'
 import classes from './PublicPost.module.css'
+import {connect} from 'react-redux'
+import * as action from '../../store/index'
 
 
 class PublicPosts extends React.Component {
@@ -14,39 +16,37 @@ class PublicPosts extends React.Component {
 
     }
 
-    postHandler = (id, favourite) => {
-        console.log(id, favourite)
-     this.state.posts.forEach(post => {
-            if(post.id === id) {
-                post.fav = favourite
-            }
-        } )
+
+
+    componentDidMount () {
+        this.props.fetchPosts()
     }
-
-    componentDidMount() {
-        http.get('posts')
-            .then(res => {
-         
-            
-
-                this.setState({
-                    posts: res.data.map(post => new Post(post)),
-                })
-            })
-    }
-
 
 
     render() {
-    console.log(this.state.posts)
-        const posts = this.state.posts.map(post => <Postcard favouriteHandler={(id, favourite) => this.postHandler(id, favourite)} postData={post} />)
+        const posts = this.props.fetchedPosts.map(post => <Postcard postData = {post} />)
+      
         return <>
+            
             <div className={classes.PostWrapper}>
                 <h3>Public Posts</h3>
                 {posts}
+                    
             </div>
         </>
     }
 }
 
-export default PublicPosts
+const mapStateToProps = state => {
+    return {
+        fetchedPosts: state.post.allPosts
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        fetchPosts: () => dispatch(action.onFetchPost())
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PublicPosts)
