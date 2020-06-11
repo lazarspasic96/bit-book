@@ -19,3 +19,12 @@ export const onFetchPost = () => {
  
     }
 }
+
+export const favouritePost = (postId, favourite) => {
+    return {
+        type: actionTypes.FAVOURITE_POSTS,
+        postId: postId,
+        favourite: favourite
+    }
+}
+

@@ -2,7 +2,8 @@ import React from 'react'
 import classes from './PostCard.module.css'
 import { NavLink } from 'react-router-dom'
 import background from '../../../assets/images/background.jpg'
-
+import {connect} from 'react-redux'
+import * as action from '../../../store/index'
 class PostCard extends React.Component {
     constructor(props) {
         super(props)
@@ -25,9 +26,7 @@ class PostCard extends React.Component {
                         <li>
                             <NavLink to='/'>   <i className={["ion-person", classes.Icon].join(' ')}></i></NavLink>
                         </li>
-                        <li      onClick={() => this.props.favouriteHandler(
-                            this.props.postData.id, this.state.favourite
-                        )}>
+                        <li onClick = {() => this.props.onFavourite(this.props.postData.id, this.props.postData.fav)}>
                        
                                  <i className={["ion-heart", classes.Icon].join(' ')}></i>
                         </li>
@@ -63,4 +62,10 @@ class PostCard extends React.Component {
     }
 }
 
-export default PostCard
+const mapDispatchToProps = dispatch => {
+    return {
+        onFavourite: (postId, favourite) => dispatch(action.favouritePost(postId, favourite))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(PostCard)

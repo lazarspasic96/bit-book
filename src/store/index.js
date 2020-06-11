@@ -4,5 +4,6 @@ export {
 } from './actions/actionCreators/authentication'
 
 export {
-    onFetchPost
+    onFetchPost,
+    favouritePost
 } from './actions/actionCreators/posts'

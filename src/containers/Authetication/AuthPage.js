@@ -21,11 +21,6 @@ class AuthPage extends React.Component {
         })
     }
 
-    componentDidMount() {
-        if(this.props.isAuth)
-            this.props.history.push('dashboard')
-    }
-
     render() {
         let auth = null
         if (this.state.switchLog) {
