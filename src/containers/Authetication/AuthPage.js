@@ -9,7 +9,8 @@ class AuthPage extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            switchLog: false
+            switchLog: false,
+            isAuth: false
         }
     }
 
@@ -21,6 +22,8 @@ class AuthPage extends React.Component {
         })
     }
 
+
+
     render() {
         let auth = null
         if (this.state.switchLog) {
@@ -30,13 +33,15 @@ class AuthPage extends React.Component {
         else {
             auth = <Login onSwitch={this.switchLogger} />
         }
+        let redirect = null
+        if(this.state.isAuth) {
+            redirect =  <Redirect to = 'e' />
+        }
 
 
-
-
-
-
-        return <div>{auth}</div>
+        return <div>
+       
+            {auth}</div>
     }
 }
 

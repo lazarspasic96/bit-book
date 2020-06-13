@@ -11,6 +11,9 @@ class Favourite extends React.Component {
          </>
 
     }
+componentDidMount () {
+
+}
 }
 
 const mapStateToProps = state => {

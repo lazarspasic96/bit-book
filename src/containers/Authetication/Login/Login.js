@@ -43,6 +43,7 @@ class Login extends React.Component {
 
                 }
             },
+            isAuth: null
         }
 
     }
@@ -65,14 +66,6 @@ class Login extends React.Component {
         this.props.onLogin(this.state.auth.email.value, this.state.auth.password.value)
 
     }
-
-    componentDidMount () {
-        if (this.state.isAuth) {
-          this.history.push('/eee')
-        }
-
-    }
-
 
 
 
@@ -100,14 +93,17 @@ class Login extends React.Component {
             />
         })
 
-        let redirect = null
-  
+
+
+
+
+
 
 
 
         return <div className={classes.Login}>
 
-            {redirect}
+  
             <form onSubmit={this.loginHandler}>
                 <img src={loginLogo} className={classes.LoginLogo} />
                 <p style={{ textAlign: 'center' }}>Login</p>

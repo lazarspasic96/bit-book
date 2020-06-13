@@ -22,12 +22,12 @@ class App extends React.Component {
       <Route path='/posts' component={PublicPosts} />
     </Switch>
 
-    if (this.props.isAuth) {
+    if (true) {
       routes = (
 
-        <Dashboard>
+        <Dashboard>  
+          <Route exact path='/posts' component={PublicPosts} />
           <Route path='/new-post' component={NewPost} />
-          <Route path='/posts' component={PublicPosts} />
           <Route path = '/favourite' component = {Favourite} />
         </Dashboard>)
     }

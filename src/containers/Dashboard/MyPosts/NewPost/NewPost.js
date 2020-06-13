@@ -70,6 +70,22 @@ class NewPost extends React.Component {
         }
     }
 
+    inputHandler = (event, inputIdentifier) => {
+
+        const updatedNewPostForm = {
+            ...this.state.newPostForm,
+            [inputIdentifier]: {
+                ...this.state.newPostForm[inputIdentifier],
+                touched: true,
+           /*      valid: this.checkValidity() */
+                value: event.target.value
+            }
+        }
+        this.setState({newPostForm: updatedNewPostForm})
+    
+
+    }
+
 
     render() {
 
@@ -87,10 +103,10 @@ class NewPost extends React.Component {
                 elementType = {newPostElement.config.elementType}
                 elementConfig={newPostElement.config.elementConfig}
                 value={newPostElement.config.value}
-                isValid={newPostElement.config.value}
+                isValid={newPostElement.config.valid}
                 touched={newPostElement.config.touched}
                 valueType={newPostElement.id}
-                changed={this.inputHandler}
+                changed={(event) => this.inputHandler(event, newPostElement.id)}
             />
           
 
