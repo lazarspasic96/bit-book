@@ -64,7 +64,6 @@ class Login extends React.Component {
     loginHandler = (event) => {
         event.preventDefault()
         this.props.onLogin(this.state.auth.email.value, this.state.auth.password.value)
-
     }
 
 

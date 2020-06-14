@@ -32,6 +32,7 @@ export const login = (email, password) => {
         http.post('auth/login', loginData)
             .then(res => {
                 console.log(res.data)
+                localStorage.setItem('token', res.data.accessToken)
                 dispatch(loginSucces(res.data.accessToken))
             })
             .catch(error => {

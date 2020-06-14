@@ -1,5 +1,6 @@
 import * as actionTypes from '../actionTypes'
 import http from '../../../services/axios'
+import { Redirect } from 'react-router-dom'
 
 
 export const fetchPostSuccess = (posts) => {
@@ -27,4 +28,44 @@ export const favouritePost = (postId, favourite) => {
         favourite: favourite
     }
 }
+
+export const newPostSucces = () => {
+    return {
+        type: actionTypes.NEW_POST_SUCCESS,
+        loading: false,
+    }
+}
+export const newPostFail = (error) => {
+    return {
+        type: actionTypes.FETCH_POST_FAIL,
+        loading: false,
+        error: error
+    }
+}
+
+export const newPostStart = () => {
+    return {
+        type: actionTypes.NEW_POST_START,
+        loading: true
+    }
+}
+
+export const newPost = (postData) => {
+    return dispatch => {
+        dispatch(newPostStart())
+
+        http.post('posts', postData)
+        
+        .then(res => {
+            dispatch(newPostSucces())
+        
+        })
+        .catch(error => {
+            dispatch(newPostFail(error))
+        })
+    }
+}
+
+
+
 

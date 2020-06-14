@@ -22,7 +22,7 @@ class App extends React.Component {
       <Route path='/posts' component={PublicPosts} />
     </Switch>
 
-    if (true) {
+    if (this.props.isAuth) {
       routes = (
 
         <Dashboard>  

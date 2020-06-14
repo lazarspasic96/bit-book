@@ -21,13 +21,13 @@ class Sidebar extends React.Component {
                     <ul className={classes.Menu} >
                
                     <li>
-                        <NavLink className = {classes.NavLink} to='eee'>
+                        <NavLink className = {classes.NavLink} to='/counter'>
                             <span class={classes.Icon}><i class="fas fa-tachometer-alt"></i></span>
                             <span class={classes.Title}>Dashboard</span>
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink className = {classes.NavLink} to='my-posts'>
+                        <NavLink className = {classes.NavLink} to='/new-post'>
                             <span className={classes.Icon}><i class="fas fa-pen"></i></span>
                             <span className={classes.Title}>New Post</span>
                             
@@ -36,7 +36,7 @@ class Sidebar extends React.Component {
                     </li>
 
                     <li> 
-                        <NavLink className = {classes.NavLink} to='e'>
+                        <NavLink className = {classes.NavLink} to='/favourite'>
                         <span className={classes.Icon}> <i class="fas fa-heart"></i></span>
                         <span className={classes.Title}>Favourite</span> 
                     </NavLink>
@@ -44,7 +44,7 @@ class Sidebar extends React.Component {
                     </li>
 
                     <li>
-                        <NavLink className = {classes.NavLink} to='o'>
+                        <NavLink className = {classes.NavLink} to='/my-posts'>
                             <span className={classes.Icon}><i class="fas fa-newspaper"></i></span>
                             <span className={classes.Title}>My Posts</span>
                             
@@ -54,7 +54,7 @@ class Sidebar extends React.Component {
 
 
                     <li>
-                        <NavLink className = {classes.NavLink} to='help'>
+                        <NavLink className = {classes.NavLink} to='/help'>
                             <span className={classes.Icon}><i class="far fa-question-circle"></i></span>
                             <span className={classes.Title}>Help</span>
                         </NavLink>

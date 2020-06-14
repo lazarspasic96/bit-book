@@ -12,9 +12,6 @@ const Input = (props) => {
 
     if (props.isValid && props.touched) {
         inputClasses.push(classes.Invalid)
-
-
-
     }
 
 
