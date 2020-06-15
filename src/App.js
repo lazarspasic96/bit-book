@@ -10,6 +10,7 @@ import NewPost from './containers/Dashboard/MyPosts/NewPost/NewPost';
 import { connect } from 'react-redux'
 import { render } from '@testing-library/react';
 import Favourite from './containers/Dashboard/Favourite/FavouritePosts';
+import MyPosts from './containers/Dashboard/MyPosts/MyPosts';
 
 
 
@@ -29,6 +30,7 @@ class App extends React.Component {
           <Route exact path='/posts' component={PublicPosts} />
           <Route path='/new-post' component={NewPost} />
           <Route path = '/favourite' component = {Favourite} />
+          <Route path = '/my-posts' component = {MyPosts} />
         </Dashboard>)
     }
 

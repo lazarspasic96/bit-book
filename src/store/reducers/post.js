@@ -3,6 +3,7 @@ import Post from '../../entities/Post'
 
 const initialState = {
     allPosts: [],
+    
 }
 const reducer = (state = initialState, action) => {
     switch (action.type) {

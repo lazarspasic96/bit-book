@@ -31,8 +31,9 @@ export const login = (email, password) => {
 
         http.post('auth/login', loginData)
             .then(res => {
-                console.log(res.data)
+                console.log(res)
                 localStorage.setItem('token', res.data.accessToken)
+                dispatch(userList(loginData))
                 dispatch(loginSucces(res.data.accessToken))
             })
             .catch(error => {
@@ -56,10 +57,11 @@ export const signUpFail = (error) => {
     }
 }
 
-export const signUpSuccess = (token) => {
+export const signUpSuccess = (token, email) => {
     return {
         type: actionTypes.SIGNUP_SUCCESS,
-        token: token
+        token: token,
+        email: email
 
     }
 }
@@ -71,11 +73,24 @@ export const signUp = (signUpData) => {
         http.post('auth/register', signUpData)
  
         .then(res => {
-            console.log()
-            dispatch(signUpSuccess(res.data.accessToken))
+    
+            dispatch(signUpSuccess(res.data.accessToken, signUpData.email))
         })
         .catch(error => {
             dispatch(signUpFail(error.response.data.message))
+        })
+    }
+}
+
+export const userList = (userData) => {
+    return dispatch => {
+        http.get('users')
+        .then(res => {
+            let userId = res.data.filter(user => userData.email === user.email)[0]
+            console.log(userId)
+            if(userId) {
+             localStorage.setItem('userId', userId.id)
+            }
         })
     }
 }
