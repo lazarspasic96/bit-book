@@ -1,10 +1,11 @@
 import * as actionTypes from '../actions/actionTypes'
 import Post from '../../entities/Post'
+import { favouritePost } from '../actions/actionCreators/posts'
 
 const initialState = {
     allPosts: [],
+    favouritePosts: [],
     myPosts: []
-    
 }
 const reducer = (state = initialState, action) => {
     switch (action.type) {
@@ -23,7 +24,8 @@ const reducer = (state = initialState, action) => {
                 }
                 return post;
             })
-            
+            const favouritePosts = updatedPosts.filter(post => post.fav)
+            localStorage.setItem('savedFavPosts', JSON.stringify(favouritePosts))
             return {
                 ...state,
                 allPosts: updatedPosts

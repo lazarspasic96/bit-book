@@ -1,23 +1,27 @@
 import React from 'react'
-import {connect} from 'react-redux'
-import PostCard from '../../../components/PostLayout/PostCard/PostCard'
+import { connect } from 'react-redux'
 import classes from './FavouritePosts.module.css'
+import PostCard from '../../../components/PostLayout/PostCard/PostCard'
+
 
 class Favourite extends React.Component {
-    render () {
-        const favouritePosts = this.props.favouritePosts.filter(post => post.fav).map(post => <PostCard postData = {post}/>)
+    render() {
+
+        const favPosts = JSON.parse(localStorage.getItem('savedFavPosts')) || [];
+
         return <>
-        <p>eee</p>
-        <div className = {classes.FavouritePosts}>
-                  {favouritePosts}
-        </div>
-  
-         </>
+            <p>eee</p>
+            <div className={classes.FavouritePosts}>
+                {favPosts.map(post => <PostCard postData={post} />)}
+            </div>
+
+        </>
 
     }
-componentDidMount () {
+    componentDidMount() {
 
-}
+
+    }
 }
 
 const mapStateToProps = state => {
