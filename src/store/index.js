@@ -1,10 +1,12 @@
 export {
     login,
-    signUp
+    signUp,
+
 } from './actions/actionCreators/authentication'
 
 export {
     onFetchPost,
     favouritePost,
-    newPost
+    newPost,
+    getMyPost
 } from './actions/actionCreators/posts'

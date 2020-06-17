@@ -3,8 +3,7 @@ import * as actionTypes from '../actions/actionTypes'
 const initialState = {
     token: null,
     loading: false,
-    error: null,
-    userEmail: null
+    error: null
 }
 
 
@@ -43,8 +42,7 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 loading: false,
-                token: action.token,
-                userEmail: action.email
+                token: action.token
               
             }
         }

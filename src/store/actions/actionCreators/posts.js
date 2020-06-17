@@ -66,6 +66,26 @@ export const newPost = (postData) => {
     }
 }
 
+export const fetchMyPost = (myPosts) => {
+    return {
+        type: actionTypes.FETCH_MYPOSTS_SUCCESS,
+        myPosts: myPosts
+    }
+}
+
+export const getMyPost = () => {
+    return dispatch => {
+        const id = localStorage.getItem('userId')
+        if(true) {
+            http.get(`users/${id}/posts`)
+            .then(res => {
+               dispatch(fetchMyPost(res.data))
+            })
+        }
+    }
+}
+
+
 
 
 

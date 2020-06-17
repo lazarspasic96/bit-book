@@ -2,7 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Layout from './components/Layout/Layout';
-import { Route, Switch, Redirect } from 'react-router-dom'
+import { Route, Switch, Redirect, withRouter } from 'react-router-dom'
 import PublicPosts from './containers/PublicPost/PublicPosts'
 import AuthPage from './containers/Authetication/AuthPage';
 import Dashboard from './containers/Dashboard/Dashboard';
@@ -21,6 +21,7 @@ class App extends React.Component {
     let routes = <Switch >
       <Route exact path='/' component={AuthPage} />
       <Route path='/posts' component={PublicPosts} />
+      <Redirect to = '/' />
     </Switch>
 
     if (this.props.isAuth) {
@@ -53,4 +54,5 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(App);
+
+export default withRouter(connect(mapStateToProps)(App));

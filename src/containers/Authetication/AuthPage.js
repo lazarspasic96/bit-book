@@ -2,7 +2,7 @@ import React from 'react'
 import Login from './Login/Login'
 import SignUp from './SignUp/SignUp'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
+import { withRouter, Redirect } from 'react-router-dom'
 
 
 class AuthPage extends React.Component {
@@ -10,7 +10,7 @@ class AuthPage extends React.Component {
         super(props)
         this.state = {
             switchLog: false,
-            isAuth: false
+            isAuth: true
         }
     }
 
@@ -33,14 +33,16 @@ class AuthPage extends React.Component {
         else {
             auth = <Login onSwitch={this.switchLogger} />
         }
-        let redirect = null
-        if(this.state.isAuth) {
-            redirect =  <Redirect to = 'e' />
+
+        let redirecting = null
+        if (this.props.isAuth) {
+            console.log('uso jeee')
+           return redirecting = <Redirect to='/dashboard' />
         }
 
 
         return <div>
-       
+            {redirecting}
             {auth}</div>
     }
 }
@@ -52,4 +54,4 @@ const mapStateToProps = state => {
 }
 
 
-export default connect(mapStateToProps)(AuthPage);
+export default withRouter(connect(mapStateToProps)(AuthPage));

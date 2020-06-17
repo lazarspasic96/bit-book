@@ -92,14 +92,12 @@ class Login extends React.Component {
             />
         })
 
+        let redirecting = null
 
-
-
-
-
-
-
-
+        if(this.props.isAuth) {
+            console.log('uso jee')
+            return redirecting = <Redirect to = '/dashboard' />
+        }
         return <div className={classes.Login}>
 
   
@@ -118,7 +116,7 @@ class Login extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        isAuth: state.auth.token !== null
+        isAuth: state.auth.token
     }
 }
 

@@ -3,6 +3,7 @@ import Post from '../../entities/Post'
 
 const initialState = {
     allPosts: [],
+    myPosts: []
     
 }
 const reducer = (state = initialState, action) => {
@@ -26,6 +27,12 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 allPosts: updatedPosts
+            }
+
+        case actionTypes.FETCH_MYPOSTS_SUCCESS:
+            return {
+                ...state,
+                allPosts: action.myPosts
             }
 
         default:

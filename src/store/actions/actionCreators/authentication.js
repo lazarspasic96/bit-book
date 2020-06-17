@@ -57,40 +57,43 @@ export const signUpFail = (error) => {
     }
 }
 
-export const signUpSuccess = (token, email) => {
+export const signUpSuccess = (token) => {
     return {
         type: actionTypes.SIGNUP_SUCCESS,
         token: token,
-        email: email
 
     }
 }
 
 export const signUp = (signUpData) => {
-    return dispatch => { 
-              console.log(signUpData)
+    return dispatch => {
+        console.log(signUpData)
         dispatch(signUpStart())
         http.post('auth/register', signUpData)
- 
-        .then(res => {
-    
-            dispatch(signUpSuccess(res.data.accessToken, signUpData.email))
-        })
-        .catch(error => {
-            dispatch(signUpFail(error.response.data.message))
-        })
+            .then(res => {
+                localStorage.setItem('token', res.data.accessToken)
+                dispatch(signUpSuccess(res.data.accessToken))
+
+
+            })
+            .catch(error => {
+                dispatch(signUpFail(error.response.data.message))
+            })
     }
 }
 
 export const userList = (userData) => {
     return dispatch => {
         http.get('users')
-        .then(res => {
-            let userId = res.data.filter(user => userData.email === user.email)[0]
-            console.log(userId)
-            if(userId) {
-             localStorage.setItem('userId', userId.id)
-            }
-        })
+            .then(res => {
+                let userId = res.data.filter(user => userData.email === user.email)[0]
+                console.log(userId)
+                if (userId) {
+                    localStorage.setItem('userId', userId.id)
+                }
+            })
     }
 }
+
+
+
