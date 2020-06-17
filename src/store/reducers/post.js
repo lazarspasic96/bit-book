@@ -30,9 +30,10 @@ const reducer = (state = initialState, action) => {
             }
 
         case actionTypes.FETCH_MYPOSTS_SUCCESS:
+            const myPosts = action.myPosts.map(post => new Post(post))
             return {
                 ...state,
-                allPosts: action.myPosts
+                myPosts
             }
 
         default:

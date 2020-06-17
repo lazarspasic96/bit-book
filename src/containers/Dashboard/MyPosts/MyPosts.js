@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import * as action from '../../../store/index'
+import MyPostItem from '../../../components/PostLayout/MyPostItem/MyPostItem'
+import classes from './MyPosts.module.css'
 
 
 
@@ -11,7 +13,15 @@ class MyPosts extends React.Component {
     }
 
     render() {
-        return <p>my posts</p>
+        const postList = this.props.myPosts.map(post => <MyPostItem postData={post} />)
+
+        return (
+            <div className = {classes.MyPostContent}>
+                {postList}
+            </div>
+
+        )
+
     }
 }
 

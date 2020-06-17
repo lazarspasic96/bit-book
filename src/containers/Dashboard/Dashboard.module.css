@@ -1,13 +1,10 @@
 .DashBoard {
-    width: 100%;
-    margin: 0;
-    display: flex;
- 
+  width: 100%;
+  margin: 0;
+  display: flex;
 }
 
 .ContentWrapper {
-   width: 70%;
-   margin: 30px auto
+  width: 60%;
+margin: 25px auto 25px 50px
 }
-
-
