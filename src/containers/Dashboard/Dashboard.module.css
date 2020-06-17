@@ -2,9 +2,10 @@
   width: 100%;
   margin: 0;
   display: flex;
+  overflow: hidden;
 }
 
 .ContentWrapper {
   width: 60%;
-margin: 25px auto 25px 50px
+  margin: 25px auto 25px 50px;
 }
