@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import * as action from '../../../store/index'
-import MyPostItem from '../../../components/PostLayout/MyPostItem/MyPostItem'
 import classes from './MyPosts.module.css'
+import PostCard from '../../../components/PostLayout/PostCard/PostCard'
 
 
 
@@ -13,7 +13,7 @@ class MyPosts extends React.Component {
     }
 
     render() {
-        const postList = this.props.myPosts.map(post => <MyPostItem postData={post} />)
+        const postList = this.props.myPosts.map(post => <PostCard postData={post} />)
 
         return (
             <div className = {classes.MyPostContent}>
@@ -27,7 +27,7 @@ class MyPosts extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        myPosts: state.post.myPosts
+        myPosts: state.post.myPosts,
     }
 }
 

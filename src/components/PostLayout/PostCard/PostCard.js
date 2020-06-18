@@ -5,15 +5,7 @@ import background from '../../../assets/images/background.jpg'
 import {connect} from 'react-redux'
 import * as action from '../../../store/index'
 class PostCard extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            favourite: false,
-            postData: this.props.postData
-        }
-    }
-
-
+ 
 
     render() {
         return (
@@ -24,7 +16,8 @@ class PostCard extends React.Component {
                             <NavLink to='/'><i className={["ion-eye", classes.Icon].join(' ')}></i></NavLink>
                         </li>
                         <li>
-                            <NavLink to='/'>   <i className={["ion-person", classes.Icon].join(' ')}></i></NavLink>
+                            {this.props.isAuth ? <NavLink to='/'>   <i className={["fas fa-pen", classes.Icon].join(' ')}></i></NavLink> : <NavLink to='/'>   <i className={["ion-person", classes.Icon].join(' ')}></i></NavLink>}
+                            
                         </li>
                         <li onClick = {() => this.props.onFavourite(this.props.postData.id, this.props.postData.fav)}>
                        
@@ -62,10 +55,16 @@ class PostCard extends React.Component {
     }
 }
 
+const mapStateToProps = state => {
+    return {
+        isAuth: state.auth.token
+    }
+}
+
 const mapDispatchToProps = dispatch => {
     return {
         onFavourite: (postId, favourite) => dispatch(action.favouritePost(postId, favourite))
     }
 }
 
-export default connect(null, mapDispatchToProps)(PostCard)
+export default connect(mapStateToProps, mapDispatchToProps)(PostCard)
