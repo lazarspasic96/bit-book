@@ -1,9 +1,10 @@
 import React from 'react'
 import Sidebar from './Sidebar/Sidebar'
-import classes from './DashBoard.module.css'
+import classes from './Dashboard.module.css'
 import {connect} from 'react-redux'
 import * as action from '../../store/index'
 import http from '../../services/axios'
+
 
 class Dashboard extends React.Component {
     constructor(props) {
