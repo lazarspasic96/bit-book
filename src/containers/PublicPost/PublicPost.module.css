@@ -6,4 +6,6 @@
 .PostWrapper {
   overflow: scroll;
   height: 80vh;
+  overflow-x: hidden;
+  width: 100%;
 }
